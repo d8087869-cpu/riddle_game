@@ -64,4 +64,41 @@ class MultipleChoiceRiddle(Riddle):
             if 1 <= number <=len(self.__possible_answers):
                 answer = self.__possible_answers[number -1]
         return super().check_answer(answer)
-    
+
+    def get_possible_answers(self) -> list[str]:
+        return self.__possible_answers.copy()
+
+class FourAnswerRiddle(MultipleChoiceRiddle):
+    def __init__(self,
+        riddle_id: int,
+        question: str,
+        correct_answer: str,
+        possible_answers: list[str],
+        difficulty: str,
+        category: str) -> None:
+        super().__init__(riddle_id,question,correct_answer,possible_answers,difficulty,category)
+
+        if len(possible_answers) !=4:
+            raise ValueError('four answer riddle must have exactly 4 answer')
+
+    def get_type(self) -> str:
+        return "multiple_4"
+
+
+class TwoAnswerRiddle(MultipleChoiceRiddle):
+    def __init__(
+        self,
+        riddle_id: int,
+        question: str,
+        correct_answer: str,
+        possible_answers: list[str],
+        difficulty: str,
+        category: str) -> None:
+
+        super().__init__(riddle_id,question,correct_answer,possible_answers,difficulty,category)
+
+        if len(possible_answers) != 2:
+            raise ValueError("Two answer riddle must have exactly 2 answers")
+
+    def get_type(self) -> str:
+        return "multiple_2"

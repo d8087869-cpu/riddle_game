@@ -1,16 +1,18 @@
 from riddle import *
 
-riddle = MultipleChoiceRiddle(
-    1,
-    "What is 5 + 7?",
-    "12",
-    ["10", "11", "12", "13"],
+
+riddle = TwoAnswerRiddle(
+    2,
+    "Is Python a programming language?",
+    "Yes",
+    ["Yes", "No"],
     "easy",
-    "math"
+    "english"
 )
 
 riddle.display()
 
-print(riddle.check_answer("3"))
-print(riddle.check_answer("12"))
-print(riddle.check_answer("10"))
+print(riddle.get_type())
+print(riddle.check_answer("1"))
+print(riddle.check_answer("Yes"))
+print(riddle.check_answer("No"))
