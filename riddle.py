@@ -6,7 +6,7 @@ class Riddle:
                  category:str) -> None:
 
         if riddle_id <= 0 :
-            raise ValueError ('Riddel ID must be positive')
+            raise ValueError ('Riddle ID must be positive')
         if not question.strip():
             raise ValueError ('Question cannot be empty')
         if not correct_answer.strip():
@@ -37,4 +37,31 @@ class Riddle:
                 'correct_answer': self.__correct_answer,
                 'difficulty': self.__difficulty,
                 'category': self.__category}
+
+    def get_question(self) -> str:
+        return self.__question
+
+class MultipleChoiceRiddle(Riddle):
+    def __init__(self, riddle_id:int, question:str, correct_answer:str,possible_answers:list[str], difficulty:str, category:str)->None:
+        super().__init__(riddle_id, question, correct_answer, difficulty, category)
+        
+        if not possible_answers:
+            raise ValueError('possible answer cannot be empty')
+        if correct_answer not in possible_answers:
+            raise ValueError('correct answer must be in possible answer')
+
+        self.__possible_answers = possible_answers
+
+    def display(self)-> None:
+        print(self.get_question())
+
+        for index, answer in enumerate(self.__possible_answers, start=1):
+            print(f'{index}. {answer}')
+        
+    def check_answer(self, answer:str)->bool:
+        if answer.isdigit():
+            number = int(answer)
+            if 1 <= number <=len(self.__possible_answers):
+                answer = self.__possible_answers[number -1]
+        return super().check_answer(answer)
     
