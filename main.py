@@ -1,5 +1,5 @@
 from riddle import *
-
+from player import Player
 
 riddle = TwoAnswerRiddle(
     2,
@@ -17,3 +17,9 @@ print(riddle.check_answer("1"))
 print(riddle.check_answer("Yes"))
 print(riddle.check_answer("No"))
 riddle.get_type()
+
+player = Player('David')
+print(player.get_username())
+player.rename("David2")
+print(player.get_username())
+player.rename("   ")
