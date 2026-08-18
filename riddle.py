@@ -61,7 +61,7 @@ class MultipleChoiceRiddle(Riddle):
     def check_answer(self, answer:str)->bool:
         if answer.isdigit():
             number = int(answer)
-            if 1 <= number <=len(self.__possible_answers):
+            if 1 <= number <= len(self.__possible_answers):
                 answer = self.__possible_answers[number -1]
         return super().check_answer(answer)
 
@@ -78,7 +78,7 @@ class FourAnswerRiddle(MultipleChoiceRiddle):
         category: str) -> None:
         super().__init__(riddle_id,question,correct_answer,possible_answers,difficulty,category)
 
-        if len(possible_answers) !=4:
+        if len(possible_answers) != 4:
             raise ValueError('four answer riddle must have exactly 4 answer')
 
     def get_type(self) -> str:
@@ -102,3 +102,19 @@ class TwoAnswerRiddle(MultipleChoiceRiddle):
 
     def get_type(self) -> str:
         return "multiple_2"
+
+class OpenRiddle(Riddle):
+    def __init__(
+        self,
+        riddle_id: int,
+        question: str,
+        correct_answer: str,
+        difficulty: str,
+        category: str) -> None:
+        super().__init__(riddle_id,question,correct_answer,difficulty,category)
+
+    def display(self) -> None:
+        print(self.get_question())
+
+    def get_type(self) -> str:
+        return "open"
