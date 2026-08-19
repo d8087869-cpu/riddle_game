@@ -23,6 +23,9 @@ class QuestionResult:
     def get_category(self) -> str:
         return self.__category
 
+    def get_riddle_id(self) -> int:
+        return self.__riddle_id
+
 class GameResult:
     def __init__(
         self,
@@ -77,3 +80,18 @@ class GameResult:
             averages[category] = sum(times) / len(times)
 
         return averages
+
+    def to_csv_row(self) -> list:
+        total_riddles = self.get_total_riddles()
+
+        if total_riddles == 0:
+            average_time = 0
+        else:
+            average_time = self.__total_time / total_riddles
+
+        return [
+            self.__username,
+            self.__date,
+            self.__total_time,
+            total_riddles,
+            average_time]

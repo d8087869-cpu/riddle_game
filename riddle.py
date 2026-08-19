@@ -41,6 +41,12 @@ class Riddle:
     def get_question(self) -> str:
         return self.__question
 
+    def get_id(self) -> int:
+        return self.__id
+
+    def get_category(self) -> str:
+        return self.__category
+
 class MultipleChoiceRiddle(Riddle):
     def __init__(self, riddle_id:int, question:str, correct_answer:str,possible_answers:list[str], difficulty:str, category:str)->None:
         super().__init__(riddle_id, question, correct_answer, difficulty, category)
