@@ -1,15 +1,25 @@
-[   {
+[
+    {
         "id": 1,
         "question": "What is 5 + 7?",
         "correct_answer": "12",
         "type": "multiple_4",
-        "possible_answers": ["10", "11", "12", "13"],
+        "possible_answers": [
+            "10",
+            "11",
+            "12",
+            "13"
+        ],
         "difficulty": "easy",
-        "category": "math"},
-    {   "id": 2,
+        "category": "math"
+    },
+    {
+        "id": 2,
         "question": "What is the capital of France?",
         "correct_answer": "Paris",
         "type": "open",
         "possible_answers": [],
         "difficulty": "easy",
-        "category": "geography"}]
+        "category": "geography"
+    }
+]

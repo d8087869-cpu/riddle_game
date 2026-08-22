@@ -35,6 +35,8 @@ class Riddle:
         return {'id': self.__id,
                 'question': self.__question,
                 'correct_answer': self.__correct_answer,
+                'type': self.get_type(),
+                'possible_answers': [],
                 'difficulty': self.__difficulty,
                 'category': self.__category}
 
@@ -73,6 +75,11 @@ class MultipleChoiceRiddle(Riddle):
 
     def get_possible_answers(self) -> list[str]:
         return self.__possible_answers.copy()
+
+    def to_dict(self) -> dict:
+        data = super().to_dict()
+        data['possible_answers'] = self.__possible_answers.copy()
+        return data
 
 class FourAnswerRiddle(MultipleChoiceRiddle):
     def __init__(self,
